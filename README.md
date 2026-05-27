@@ -1,9 +1,6 @@
 # Amazon-Data-Final-Project
 # What Drives Logistics Efficiency in Last Mile Delivery Operations?
-
-**BUS 32130: Data Visualization for Decision-Making | Spring 2026**
 **Group: Roberto Nunez & WestLee Parker**
-**Instructor: Professor Lara Kattan**
 
 ---
 
