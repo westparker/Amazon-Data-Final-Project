@@ -1,7 +1,6 @@
 # What Drives Logistics Efficiency in Last Mile Delivery Operations?
 **Group: Roberto Nunez & WestLee Parker**
 
----
 
 ## Overview
 
