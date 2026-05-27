@@ -130,15 +130,16 @@ The dashboard answers four questions in one view: *how is the system performing 
 
 ---
 
-## Use of Large Language Models
+## Use of LLMs & AI
 
-We used an LLM assistant (Claude) throughout this project, and being honest about how it helped is part of the writeup.
+In this project, LLMs were utilized as an analytical partner to accelerate data processing, enforce data quality, and expand the scope of exploratory data analysis (EDA). While initial EDA and baseline data cleaning were handled manually, AI was instrumental in identifying subtle anomalies and scaling complex transformations.
 
-The biggest contribution was working past the limitations of our own data skills. Our initial EDA went reasonably well on its own. We could load the data, see the missing values, and start working with it. But the LLM pushed the analysis further than we would have taken it ourselves. It helped us think critically about the data and flagged checks we had not even considered. We would not have thought to verify that delivery agent ages fell outside a realistic range, or that some of the geographic coordinates were genuinely wrong and needed to be corrected rather than just dropped. It also helped with the city labels. A lot of deliveries were only loosely located, and without help many would have ended up labeled as "Other." Cross-referencing the latitude and longitude coordinates against known city centers let us map those out properly. In short, the LLM filled gaps in our foundational skills in a way that let us keep building, and we learned from each step rather than just accepting an answer.
+**Key contributions included:**
+* **Advanced Data Validation:** The AI prompted critical logic checks **we** had not initially considered, such as flagging delivery agent ages that fell outside legal parameters and identifying mathematically invalid geographic coordinates for correction rather than deletion.
+* **Feature Engineering:** To prevent loosely located deliveries from being dumped into an "Other" category, **we** used the LLM to write scripts that cross-referenced latitude and longitude coordinates against known city centers, mapping them accurately.
+* **Tool Mastery & Debugging:** AI served as a dynamic debugging tool, accelerating the resolution of complex Tableau visualization issues.
 
-The second area where it helped was working through pain points in Tableau. When we got stuck building a specific visual, we could describe what we were trying to make and what was going wrong, and work through the fix step by step. That kept the project moving when we would otherwise have been blocked.
-
-Our honest takeaway is that an LLM is a genuinely useful tool, but only when you already know where you want to go and how you intend to analyze the data. It accelerated our learning and troubleshooting, but the analytical direction, the cleaning decisions, the dashboard design, and the final interpretations were ours. The tool helped us execute and learn faster, not think for us.
+Integrating AI into this workflow allowed us to optimize code, practice efficient prompt engineering, and build a highly validated data pipeline. Ultimately, it transformed a standard analysis into a much more robust project while simultaneously deepening our foundational technical skills.
 
 ---
 
