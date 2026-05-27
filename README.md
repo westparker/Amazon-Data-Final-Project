@@ -115,6 +115,7 @@ The dashboard answers four questions in one view: *how is the system performing 
 ## Limitations and Assumptions
 
 - **Time window is short.** The data covers only February through April 2022, so seasonal effects like monsoon, summer heat, and festival surges are not captured. Findings should be re-validated against current data before action.
+- **Delivery volumes are highly imbalanced across cities.** Comparing performance metrics between a massive metropolitan hub and a low-volume regional city is prone to statistical noise. Managers should be cautious about drawing firm conclusions or making operational changes in low-volume markets without gathering more data.
 - **City labels are approximate.** We assigned each delivery to the nearest major city within roughly 55 km. Suburbs and satellite towns may be miscategorized, though the high-volume cities that carry most of the data are confidently mapped.
 - **Distance is straight-line, not road distance.** The Haversine formula gives the shortest possible distance between two points. Actual driving distance is longer, so Distance_KM understates how far an agent traveled. It is a sound proxy for comparing deliveries but not an exact route measurement.
 - **Bicycle sample is tiny.** Only 15 deliveries used a bicycle, so any analysis filtered to that vehicle type is directional, not conclusive.
