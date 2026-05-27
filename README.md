@@ -98,7 +98,7 @@ The dashboard answers four questions in one view: *how is the system performing 
 
 **Agent rating is the strongest agent-level signal,** with a correlation of about -0.31 with delivery time, while agent age shows only a weak relationship.
 
-**Weather is the strongest categorical driver of severe delays. Fog conditions push the severe-delay rate to 27.3% and Cloudy to 26.9%, well above the overall rate of 16.3%. Sunny conditions, by contrast, hold the severe-delay rate to 6.8%. Weather sensitivity matters more for failure rate than for typical delivery time.
+**Weather is the strongest categorical driver of severe delays.** Fog conditions push the severe-delay rate to 27.3% and Cloudy to 26.9%, well above the overall rate of 16.3%. Sunny conditions, by contrast, hold the severe-delay rate to 6.8%. Weather sensitivity matters more for *failure rate* than for typical delivery time.
 
 ---
 
@@ -106,11 +106,9 @@ The dashboard answers four questions in one view: *how is the system performing 
 
 1. **Measure tail performance, not just averages.** A manager looking only at average delivery time sees no variation across India and concludes the network is balanced. P90 reveals which cities produce slower bad-day experiences. Amazon should add P90 and P95 to standard operational dashboards.
 
-2. **Investigate Vadodara and Jaipur specifically.** These are the operational weak points among high-volume markets and should be the priority targets for root-cause analysis.
+2. **Investigate Dehradun, Vadodara, and Jaipur.** Dehradun stands out on average delivery time (205 min, roughly 60 min above the overall mean of 128 min). Vadodara and Jaipur stand out on tail performance (P90 above peer cities). These are different signals from different metrics, and both warrant root-cause analysis.
 
 3. **Do not over-invest in small-volume markets without more data.** We deliberately filtered out cities with fewer than 1,000 deliveries because their P90 values were dominated by statistical noise. Apparent problems in those markets should be confirmed with more data before any operational investment.
-
-4. **Investigate Dehradun, Vadodara, and Jaipur. Dehradun stands out on average delivery time (205 min, roughly 60 min above the overall mean). Vadodara and Jaipur stand out on tail performance (P90 above peer cities). These are different signals from different metrics, and both warrant root-cause analysis.
 
 ---
 
