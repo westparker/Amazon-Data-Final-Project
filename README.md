@@ -29,33 +29,19 @@ The project is organized around four hypotheses from our original proposal:
 
 ---
 
-## Repository Contents
-
-| File | Description |
-|------|-------------|
-| `Vis_Final_Project.twbx` | Packaged Tableau workbook containing all dashboards and worksheets |
-| `amazon_delivery_eda.ipynb` | Python notebook documenting the full data cleaning, validation, and exploratory analysis |
-| `amazon_delivery_clean.csv` | The cleaned dataset produced by the notebook and used as the source for every Tableau dashboard |
-| `Data_Visualization_Final_Project_Proposal.pdf` | Our original project proposal |
-| `README.md` | This file |
-
-**Tableau workbook link:** *(paste your published Tableau Public / course Tableau site link here)*
-
----
-
 ## The Dataset
 
 **Source:** [Amazon Delivery Dataset on Kaggle](https://www.kaggle.com/datasets/sujalsuthar/amazon-delivery-dataset)
 
 The raw file contains 43,739 individual deliveries across more than 20 Indian cities, recorded between February and April 2022. Each row captures order and pickup timestamps, store and drop-off GPS coordinates, delivery agent attributes, the weather and traffic conditions at the time of the order, the vehicle and area type, the product category, and the total delivery time in minutes.
 
-This comfortably clears the "sufficient heft" bar: 16 raw columns and over 43,000 rows, expanded to 24 columns and 40,153 rows after cleaning and feature engineering.
+After cleaning the data we were left with 24 columns and 40,153 rows.
 
 ---
 
 ## Data Cleaning and Validation
 
-The raw export was not analysis-ready. Before building a single chart, we profiled the data, documented every issue, and applied a cleaning pipeline. The full process is in `amazon_delivery_eda.ipynb`. Summary of what we did:
+The raw export was not analysis ready. Before building a single chart, we profiled the data, documented every issue, and applied a cleaning pipeline. The full process is in `amazon_delivery_eda.ipynb`. Summary of what we did:
 
 **Standardized categorical text.** Stripped trailing whitespace from every text column, fixed inconsistent casing (for example "motorcycle" became "Motorcycle"), and corrected the misspelling "Metropolitian" to "Metropolitan."
 
@@ -86,18 +72,17 @@ This took the dataset from 16 columns up to 24.
 The Tableau workbook contains four dashboards, each answering one part of the central question.
 
 ### Executive Dashboard
-A high-level summary of system performance: average delivery time, average distance, and average delivery speed. This gives a manager a quick read on the network before drilling into the detailed views.
+A single-screen view designed for a manager who needs the headline story without clicking into anything. The dashboard is built in four sections that read top to bottom.
 
-### D2: Distance and Time
-A scatter plot of distance against delivery time with a trend line, supported by average time per distance bucket and a severe-delay rate breakdown. This view tests Hypothesis 1 and shows that distance and time move together but the relationship flattens out, meaning distance alone is a weak predictor.
+**Top KPI Summary** gives the high-level numbers at a glance: Overall Average Delivery Time (128 mins vs a 180-min threshold), Severe Delay Rate (16.3% vs an 18% threshold), Longest Route Average Time (139 mins for 20-23 km trips), Highest Risk Weather (Fog, with a 27.3% severe delay rate), and the Top High-Risk City (Dehradun at 205 min average).
 
-### D3: Geographic Performance
-An interactive map of India paired with a city ranking bar chart. City dots are sized by delivery volume and colored by P90 delivery time, the "bad day" experience that 90 percent of deliveries finish within. A sample-size filter restricts the comparison to cities with at least 1,000 deliveries so the rankings are statistically reliable. This view tests Hypotheses 2 and 4.
+**Geographic Overview** plots every city on a map of India, with circle size showing delivery volume and color showing average delivery time. This lets a viewer immediately spot where the network's weight sits and which cities are running slower than peers.
 
-### D6: Weather Impact
-A breakdown of how weather conditions affect delivery duration and severe-delay rates, comparing performance across weather categories.
+**Key Drivers of Delays** sits to the right of the map and breaks down *why* delays happen along three dimensions: Severe Delay Risk by Weather (Fog and Cloudy lead at 27.3% and 26.9%), Severe Delay Risk by Distance (severe-delay rate climbs sharply from 3% on short trips to 29% on the longest), and Average Delivery Time by Distance bucket (showing the relationship between trip length and time).
 
-All dashboards share a consistent set of interactive filters (Traffic, Weather, Vehicle, Area) so a viewer can slice the data and watch every view respond together.
+**Where Delays Are Highest** finishes the dashboard with a Top 5 Cities by Average Delivery Time bar chart and a Key Insight callout box flagging Dehradun as roughly 60 minutes above the overall average.
+
+The dashboard answers four questions in one view: *how is the system performing overall, where does delivery happen, what drives delays, and which locations are worst affected.*
 
 ---
 
@@ -113,6 +98,8 @@ All dashboards share a consistent set of interactive filters (Traffic, Weather, 
 
 **Agent rating is the strongest agent-level signal,** with a correlation of about -0.31 with delivery time, while agent age shows only a weak relationship.
 
+**Weather is the strongest categorical driver of severe delays. Fog conditions push the severe-delay rate to 27.3% and Cloudy to 26.9%, well above the overall rate of 16.3%. Sunny conditions, by contrast, hold the severe-delay rate to 6.8%. Weather sensitivity matters more for failure rate than for typical delivery time.
+
 ---
 
 ## How These Findings Should Drive Decisions
@@ -122,6 +109,8 @@ All dashboards share a consistent set of interactive filters (Traffic, Weather, 
 2. **Investigate Vadodara and Jaipur specifically.** These are the operational weak points among high-volume markets and should be the priority targets for root-cause analysis.
 
 3. **Do not over-invest in small-volume markets without more data.** We deliberately filtered out cities with fewer than 1,000 deliveries because their P90 values were dominated by statistical noise. Apparent problems in those markets should be confirmed with more data before any operational investment.
+
+4. **Investigate Dehradun, Vadodara, and Jaipur. Dehradun stands out on average delivery time (205 min, roughly 60 min above the overall mean). Vadodara and Jaipur stand out on tail performance (P90 above peer cities). These are different signals from different metrics, and both warrant root-cause analysis.
 
 ---
 
