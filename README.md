@@ -12,7 +12,7 @@ Our core question: **of all the factors recorded in a delivery (distance, traffi
 
 ## Target Audience
 
-This project is built for **logistics and operations managers** responsible for regional delivery performance, **supply chain analysts** who monitor efficiency metrics, and **students or professionals** studying how large technology companies run last mile delivery networks.
+This project is built for logistics and operations managers responsible for regional delivery performance, supply chain analysts who monitor efficiency metrics, and students or professionals studying how large technology companies run last mile delivery networks.
 
 The dashboards are designed to be read by a decision-maker, not a data scientist. Each one answers a specific operational question and is built to stand on its own without narration.
 
@@ -133,11 +133,11 @@ The dashboard answers four questions in one view: *how is the system performing 
 
 ## Use of LLMs & AI
 
-In this project, LLMs were utilized as an analytical partner to accelerate data processing, enforce data quality, and expand the scope of exploratory data analysis (EDA). While initial EDA and baseline data cleaning were handled manually, AI was instrumental in identifying subtle anomalies and scaling complex transformations.
+In this project, LLMs were utilized as an analytical partner to accelerate data processing, enforce data quality, and expand the scope of exploratory data analysis (EDA). While the initial EDA and  data cleaning had good results, AI was instrumental in identifying/fixing unforeseen data issues.
 
 **Key contributions included:**
-* **Advanced Data Validation:** The AI prompted critical logic checks **we** had not initially considered, such as flagging delivery agent ages that fell outside legal parameters and identifying mathematically invalid geographic coordinates for correction rather than deletion.
-* **Feature Engineering:** To prevent loosely located deliveries from being dumped into an "Other" category, **we** used the LLM to write scripts that cross-referenced latitude and longitude coordinates against known city centers, mapping them accurately.
+* **Advanced Data Validation:** The AI prompted critical logic checks we had not initially considered, such as flagging delivery agent ages that fell outside legal parameters and identifying mathematically invalid geographic coordinates for correction rather than deletion.
+* **Feature Engineering:** To prevent loosely located deliveries from being dumped into an "Other" category, we used the LLM to write scripts that cross-referenced latitude and longitude coordinates against known city centers, mapping them accurately.
 * **Tool Mastery & Debugging:** AI served as a dynamic debugging tool, accelerating the resolution of complex Tableau visualization issues.
 
 Integrating AI into this workflow allowed us to optimize code, practice efficient prompt engineering, and build a highly validated data pipeline. Ultimately, it transformed a standard analysis into a much more robust project while simultaneously deepening our foundational technical skills.
